@@ -1,0 +1,97 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model HospitalManagement.Models.DoctorModel;
+<html>
+<head>
+
+</head>
+<body>
+    <form asp-action="UpdateDoctor">
+        <div class="row">
+            <div class="col-md-4">
+                First Name
+                <span class="text-danger">*</span>
+                <input type="text" asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                Last Name
+                <span class="text-danger">*</span>
+                <input type="text" asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                Gender
+                <span class="text-danger">*</span>
+                <br />
+                <input type="radio" asp-for="Gender" value="true" name="Gender" /> Male
+                <input type="radio" asp-for="Gender" value="false" name="Gender" /> Female
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                Join Date
+                <span class="text-danger">*</span>
+                <input type="date" asp-for="JoinDate" class="form-control" />
+                <span asp-validation-for="JoinDate" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                Salary
+                <span class="text-danger">*</span>
+                <input type="text" asp-for="Salary" class="form-control" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                Mobile
+                <span class="text-danger">*</span>
+                <input type="text" asp-for="Mobile" class="form-control" maxlength="10" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                Shift Type Name
+                <span class="text-danger">*</span>
+                <select asp-for="ShiftTypeId" class="form-select" asp-items="@(new SelectList(ViewBag.Shift, "Id", "Name"))">
+                    <option value="">Please Select</option>
+                </select>
+                <span asp-validation-for="ShiftTypeId" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                Specialization Name
+                <span class="text-danger">*</span>
+                <select asp-for="SpecializationId" class="form-select" asp-items="@(new SelectList(ViewBag.Specialization, "Id", "Name"))">
+                    <option selected="selected" value="">Please Select</option>
+                </select>
+                <span asp-validation-for="SpecializationId" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                Year Of Experience
+                <span class="text-danger">*</span>
+                <input type="number" asp-for="YearOfExperience" class="form-control" />
+                <span asp-validation-for="YearOfExperience" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="hidden"asp-for="DoctoeId" />
+                <input type="submit" class="btn btn-primary" value="Update" />
+            </div>
+        </div>
+    </form>
+</body>
+@section Scripts {
+            @{
+                   await Html.RenderPartialAsync("_ValidationScriptsPartial"); // fire for validation
+            }
+}
+</html>
